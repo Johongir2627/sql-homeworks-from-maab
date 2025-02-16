@@ -1,5 +1,15 @@
 --Homework 8
 
+use Homework8
+create table Categories(CategoryName varchar(20), Description varchar(20))
+create table Employees (FirstName varchar(20), Lastname varchar(20),  HireDate varchar(20))
+update  employees add (Title varchar(20))
+
+
+
+
+
+
 
 --1. Return all the fields from all the shippers
 select * from Shippers
@@ -84,7 +94,8 @@ select Country from Customers group by Country
 
 
 
---17. Show a list of all the different values in the Customers table for ContactTitles. Also include a count for each ContactTitle.select ContactTitle, count(*) from Customers group by ContactTitle
+--17. Show a list of all the different values in the Customers table for ContactTitles. Also include a count for each ContactTitle.
+select ContactTitle, count(*) from Customers group by ContactTitle
 
 
 
@@ -164,6 +175,9 @@ select c.CustomerID, o.CustomerID from Customers c left join Orders o where o.Cu
 --31
 select c.CustomerID, o.CustomerID from Customers c left join Orders o on o.CustomerID = c.CustomerID and o.EmployeeID = 4
 where o.CustomerID is null
+
+
+
 
 
 
