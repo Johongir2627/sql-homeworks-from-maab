@@ -254,13 +254,13 @@ on	CustomerCountries.Country =	SupplierCountries.Country
 
 
  --54
- ;With	SupplierCountries	as	(select	Country	,	Total	=	Count(*)	from	Suppliers
- group	by	Country)	,CustomerCountries	as	(select		Country	,	Total	=	Count(*)
- from	Customers	group	by	Country)	select	Country	=	isnull(
- SupplierCountries.Country,	CustomerCountries.Country)	,TotalSuppliers=
- isnull(SupplierCountries.Total,0)	,TotalCustomers=
- isnull(CustomerCountries.Total,0)	From	SupplierCountries	Full	Outer	Join
- CustomerCountries	on	CustomerCountries.Country	=	SupplierCountries.Country
+;with SupplierCountries as
+(select Country, Total = count(*) from Suppliers group by Country), CustomerCountries as (
+select Country, Total = count(*) from Customers group by Country) 
+select Country = isnull(SupplierCountries.Country, CustomerCountries.Country), 
+TotalSuppliers = isnull(SupplierCountries.Total,0), 
+TotalCustomers = isnull(CustomerCountries.Total,0) from	SupplierCountries full outer join
+CustomerCountries on CustomerCountries.Country = SupplierCountries.Country
 
 
 
